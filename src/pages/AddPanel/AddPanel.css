@@ -1,0 +1,25 @@
+.add-panel {
+    padding: 20px;
+}
+
+.add-panel .tab-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.add-panel .tab-buttons button {
+    padding: 10px 20px;
+    border: 2px solid #ff5c5c;
+    background-color: white;
+    color: #ff5c5c;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.add-panel .tab-buttons .active {
+    background-color: #ff5c5c;
+    color: white;
+}

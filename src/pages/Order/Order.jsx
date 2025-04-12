@@ -2,19 +2,22 @@ import React from 'react'
 import './Order.css'
 import { useState } from 'react'
 import axios from 'axios'
-import {toast} from 'react-toastify'
+import { toast } from 'react-toastify'
 import { useEffect } from 'react'
 import { assets } from '../../assets/assets.js'
 
-export default function Order({url}) {
-  const [orders, serOrders] = useState([])
+export default function Order() {
+
+  const url = 'https://jai-sweet-backend.onrender.com'
+
+  const [orders, setOrders] = useState([])
 
   const fetchAllOrders = async () => {
     const response = await axios.get(url + '/api/order/list')
-    if(response.data.success){
-      serOrders(response.data.data)
+    if (response.data.success) {
+      setOrders(response.data.data)
     }
-    else{
+    else {
       toast.error("Error")
     }
   }
@@ -24,14 +27,14 @@ export default function Order({url}) {
       orderId,
       status: event.target.value
     })
-    if(response.data.success){
+    if (response.data.success) {
       await fetchAllOrders()
     }
   }
 
   useEffect(() => {
     fetchAllOrders()
-  },[])
+  }, [])
 
   return (
     <div className='order add'>
@@ -43,12 +46,8 @@ export default function Order({url}) {
             <div>
               <p className='order-item-food'>
                 {order.products.map((item, index) => {
-                  if(index === order.products.length - 1){
-                    return item.name + ' x ' + item.quantity
-                  }
-                  else{
-                    return item.name + ' x ' + item.quantity + ', '
-                  }
+                  const itemText = `${item.name} (${item.category} - ${item.subcategory || 'Undefined'}) x ${item.quantity}`;
+                  return index === order.products.length - 1 ? itemText : itemText + ', ';
                 })}
               </p>
               <p className='order-item-name'>Name: {order.userId.name}</p>

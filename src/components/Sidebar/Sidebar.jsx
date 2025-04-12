@@ -4,6 +4,7 @@ import { assets } from '../../assets/assets'
 import { NavLink } from 'react-router-dom'
 
 export default function Sidebar() {
+
   return (
     <div className='sidebar'>
       <div className='sidebar-options'>
