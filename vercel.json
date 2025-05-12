@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/jaisweet-admin/(.*)", "destination": "/$1" }
+  ]
+}
