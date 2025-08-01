@@ -1,4 +1,3 @@
-import React from 'react'
 import './Order.css'
 import { useState } from 'react'
 import axios from 'axios'
